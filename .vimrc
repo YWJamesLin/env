@@ -1,0 +1,30 @@
+set history=700
+set autoread
+set wildmenu
+set ruler
+set hid
+set backspace=eol,start,indent
+if has('mouse')
+  set mouse=a
+endif
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch 
+set magic
+set showmatch
+set mat=2
+set noerrorbells
+set novisualbell
+set nu
+syntax enable 
+set background=dark
+set encoding=utf8
+set expandtab
+set smarttab
+set shiftwidth=2
+set tabstop=2
+set ai
+set wrap
+set viminfo^=%
+set laststatus=2

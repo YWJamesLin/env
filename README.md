@@ -1,1 +1,3 @@
-just some configurations
+just some configurations about
+  ViM
+  bash
