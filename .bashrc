@@ -32,6 +32,7 @@ alias c="clear"
 alias m="more"
 alias j="jobs"
 alias grep="grep --color=always"
+alias less="less -r"
 
 alias poweroff="sync;sync;poweroff"
 alias reboot="sync;sync;reboot"
