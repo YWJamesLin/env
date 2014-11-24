@@ -22,7 +22,6 @@ fi
 alias ll='ls -l'
 alias dir='ls -ba'
 alias l='ls -al'
-alias less='less -r'
 
 alias ss="ps -aux"
 alias dot='ls .[a-zA-Z0-9_]*'
@@ -31,11 +30,11 @@ alias news="xterm -g 80x45 -e trn -e -S1 -N &"
 alias c="clear"
 alias m="more"
 alias j="jobs"
-alias grep="grep --color=always"
-alias less="less -r"
 
 alias poweroff="sync;sync;poweroff"
 alias reboot="sync;sync;reboot"
+alias grep="grep --color=always"
+alias less="less -r"
 
 # common misspellings
 alias mroe=more
