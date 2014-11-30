@@ -1,13 +1,37 @@
-if [ -z "$PS1" ]; then
-	return
+if [ -z "$PS1" ] ; then
+  return
 fi
 
 # Environment Variables
 
+#   Prompting
+lred="\[\e[1;31m\]"
+lgreen="\[\e[1;32m\]"
+lyellow="\[\e[1;33m\]"
+lblue="\[\e[1;34m\]"
+lmagenta="\[\e[1;35m\]"
+lcyan="\[\e[1;36m\]"
+lwhite="\[\e[1;37m\]"
+dwhite="\[\e[2;37m\]"
+reset="\[\e[0m\]"
+date="\D{%Y年%m月%d日 週%a %H:%M}"
+
+function promptGen ()
+{
+  EXIT="$?"
+  PS1="${lblue}[${reset} ${lgreen}\u${reset} ${dwhite}@${reset} ${lcyan}\h${reset} ${lblue}]${reset} ${lwhite}-${reset} ${lblue}[${reset} ${lwhite}\w${reset} ${lblue}]${reset} ${lwhite}-${reset} ${lblue}[${reset} ${lyellow}${date}${reset} ${lblue}]${reset}\n"
+
+  if [ "$EXIT" == "0" ] ; then
+    PS1+="${lcyan}^_^${reset} ${lgreen}\$${reset} "
+  else
+    PS1+="${lmagenta}Q_Q${reset} ${lred}\$${reset} "
+  fi
+}
+export PROMPT_COMMAND=promptGen
+
 # 	System
-PS1='\[\e[1;34m\][\[\e[1;32m\] \u \[\e[2;37m\]@\[\e[1;36m\] \h \[\e[1;34m\]]\[\e[1;37m\] - \[\e[1;34m\][\[\e[1;37m\] \w \[\e[1;34m\]]\[\e[1;37m\] - \[\e[1;34m\][\[\e[1;33m\] \D{%Y年%m月%d日 週%a %H:%M} \[\e[1;34m\]]\n\[\e[1;34m\][\[\e[1;35m\] \$ \[\e[1;34m\]]\[\e[0;37m\]'
 LC_ALL="zh_TW.UTF-8"
-export PS1 LC_ALL
+export LC_ALL
 
 # bogus
 if [ -f /unix ] ; then	
