@@ -22,9 +22,14 @@ function promptGen ()
   PS1="${lblue}[${reset} ${lgreen}\u${reset} ${dwhite}@${reset} ${lcyan}\h${reset} ${lblue}]${reset} ${lwhite}-${reset} ${lblue}[${reset} ${lwhite}\w${reset} ${lblue}]${reset} ${lwhite}-${reset} ${lblue}[${reset} ${lyellow}${date}${reset} ${lblue}]${reset}\n"
 
   if [ "$EXIT" == "0" ] ; then
-    PS1+="${lcyan}^_^${reset} ${lgreen}\$${reset} "
+    PS1+=${lcyan}^_^${reset}\ ${lgreen}
   else
-    PS1+="${lmagenta}Q_Q${reset} ${lred}\$${reset} "
+    PS1+=${lmagenta}Q_Q${reset}\ ${lred}
+  fi
+  if [ "$USER" == "root" ] ; then
+    PS1+=\#${reset}\ 
+  else
+    PS1+=\$${reset}\ 
   fi
 }
 export PROMPT_COMMAND=promptGen
