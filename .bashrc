@@ -3,33 +3,32 @@ if [ -z "$PS1" ] ; then
 fi
 
 # Environment Variables
-
 #   Prompting
 #
 # FG
-# 013: light red
-# 014: light green
-# 015: light yellow
-# 016: light blue
-# 017: light magneta
-# 016: light cyan
-# 017: light white
-for color in {000..255}; do
+# 9: light red
+# 10: light green
+# 11: light yellow
+# 12: light blue
+# 13: light magneta
+# 14: light cyan
+# 15: light white
+for color in {9..15}; do
   FG[${color}]="[38;5;${color}m"
 done
-B="\[\e[1m\]"
+bold="\[\e[1m\]"
 reset="\[\e[0m\]"
 date="\D{%Y年%m月%d日 週%a %H:%M}"
 
 function promptGen ()
 {
   EXIT="$?"
-  PS1="${FG[014]}${B}[${reset} ${FG[012]}\u${reset} @ ${FG[016]}\h${reset} ${FG[014]}${B}]${reset} ${FG[017]}-${reset} ${FG[014]}${B}[${reset} ${FG[017]}\w${reset} ${FG[014]}${B}]${reset} ${FG[017]}-${reset} ${FG[014]}${B}[${reset} ${FG[013]}${date}${reset} ${FG[014]}${B}]${reset}\n"
+  PS1="${FG[12]}${bold}[${reset} ${FG[10]}\u${reset} @ ${FG[14]}\h${reset} ${FG[12]}${bold}]${reset} ${FG[15]}-${reset} ${FG[12]}${bold}[${reset} ${FG[15]}\w${reset} ${FG[12]}${bold}]${reset} ${FG[15]}-${reset} ${FG[12]}${bold}[${reset} ${FG[11]}${date}${reset} ${FG[12]}${bold}]${reset}\n"
 
   if [ "$EXIT" == "0" ] ; then
-    PS1+=${FG[016]}^_^${reset}\ ${FG[012]}
+    PS1+=${FG[14]}^_^${reset}\ ${FG[10]}
   else
-    PS1+=${FG[015]}Q_Q${reset}\ ${FG[011]}
+    PS1+=${FG[13]}Q_Q${reset}\ ${FG[9]}
   fi
   if [ "$USER" == "root" ] ; then
     PS1+=\#${reset}\ 
@@ -58,7 +57,7 @@ alias dir='ls -ba'
 alias l='ls -al'
 
 alias ss="ps -aux"
-alias dot='ls .[a-zA-Z0-9_]*'
+alias dot='ls .[a-zA-Z0-011_]*'
 alias news="xterm -g 80x45 -e trn -e -S1 -N &"
 
 alias c="clear"
