@@ -5,26 +5,31 @@ fi
 # Environment Variables
 
 #   Prompting
-lred="\[\e[1;31m\]"
-lgreen="\[\e[1;32m\]"
-lyellow="\[\e[1;33m\]"
-lblue="\[\e[1;34m\]"
-lmagenta="\[\e[1;35m\]"
-lcyan="\[\e[1;36m\]"
-lwhite="\[\e[1;37m\]"
-dwhite="\[\e[2;37m\]"
+#
+# FG
+# 013: light red
+# 014: light green
+# 015: light yellow
+# 016: light blue
+# 017: light magneta
+# 016: light cyan
+# 017: light white
+for color in {000..255}; do
+  FG[${color}]="[38;5;${color}m"
+done
+B="\[\e[1m\]"
 reset="\[\e[0m\]"
 date="\D{%Y年%m月%d日 週%a %H:%M}"
 
 function promptGen ()
 {
   EXIT="$?"
-  PS1="${lblue}[${reset} ${lgreen}\u${reset} ${dwhite}@${reset} ${lcyan}\h${reset} ${lblue}]${reset} ${lwhite}-${reset} ${lblue}[${reset} ${lwhite}\w${reset} ${lblue}]${reset} ${lwhite}-${reset} ${lblue}[${reset} ${lyellow}${date}${reset} ${lblue}]${reset}\n"
+  PS1="${FG[014]}${B}[${reset} ${FG[012]}\u${reset} @ ${FG[016]}\h${reset} ${FG[014]}${B}]${reset} ${FG[017]}-${reset} ${FG[014]}${B}[${reset} ${FG[017]}\w${reset} ${FG[014]}${B}]${reset} ${FG[017]}-${reset} ${FG[014]}${B}[${reset} ${FG[013]}${date}${reset} ${FG[014]}${B}]${reset}\n"
 
   if [ "$EXIT" == "0" ] ; then
-    PS1+=${lcyan}^_^${reset}\ ${lgreen}
+    PS1+=${FG[016]}^_^${reset}\ ${FG[012]}
   else
-    PS1+=${lmagenta}Q_Q${reset}\ ${lred}
+    PS1+=${FG[015]}Q_Q${reset}\ ${FG[011]}
   fi
   if [ "$USER" == "root" ] ; then
     PS1+=\#${reset}\ 
