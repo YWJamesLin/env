@@ -18,7 +18,7 @@ reset="\[\e[0m\]"
 date="\D{%Y年%m月%d日 週%a %H:%M}"
 
 #   Prompting
-function promptGen ()
+function promptGen()
 {
   EXIT="$?"
 
