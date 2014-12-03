@@ -2,41 +2,49 @@ if [ -z "$PS1" ] ; then
   return
 fi
 
-# Environment Variables
-#   Prompting
-#
-# FG
-# 9: light red
-# 10: light green
-# 11: light yellow
-# 12: light blue
-# 13: light magneta
-# 14: light cyan
-# 15: light white
-for color in {9..15}; do
+# Prompting
+
+#   Set which to show
+mod_time=1
+
+#   Colored Ascii Escape Character Array
+for color in {0..255}; do
   FG[${color}]="[38;5;${color}m"
 done
+
+#   Other Variables
 bold="\[\e[1m\]"
 reset="\[\e[0m\]"
 date="\D{%Y年%m月%d日 週%a %H:%M}"
 
+#   Prompting
 function promptGen ()
 {
   EXIT="$?"
-  PS1="${FG[12]}${bold}[${reset} ${FG[10]}\u${reset} @ ${FG[14]}\h${reset} ${FG[12]}${bold}]${reset} ${FG[15]}-${reset} ${FG[12]}${bold}[${reset} ${FG[15]}\w${reset} ${FG[12]}${bold}]${reset} ${FG[15]}-${reset} ${FG[12]}${bold}[${reset} ${FG[11]}${date}${reset} ${FG[12]}${bold}]${reset}\n"
 
-  if [ "$EXIT" == "0" ] ; then
+  PS1="${FG[12]}${bold}[${reset} ${FG[10]}\u${reset} @ ${FG[14]}\h${reset} ${FG[12]}${bold}]${reset} ${FG[15]}-${reset} ${FG[12]}${bold}[${reset} ${FG[15]}\w${reset} ${FG[12]}${bold}]${reset}"
+
+  if [ "${mod_time}" == "1" ]; then
+    PS1+=\ ${FG[15]}-${reset}\ ${FG[12]}${bold}[${reset}\ ${FG[11]}${date}${reset}\ ${FG[12]}${bold}]${reset}
+  fi
+
+  PS1+="\n"
+
+  if [ "$EXIT" == "0" ]; then
     PS1+=${FG[14]}^_^${reset}\ ${FG[10]}
   else
     PS1+=${FG[13]}Q_Q${reset}\ ${FG[9]}
   fi
-  if [ "$USER" == "root" ] ; then
+
+  if [ "$USER" == "root" ]; then
     PS1+=\#${reset}\ 
   else
     PS1+=\$${reset}\ 
   fi
 }
 export PROMPT_COMMAND=promptGen
+
+# Environment Variables
 
 # 	System
 LC_ALL="zh_TW.UTF-8"
