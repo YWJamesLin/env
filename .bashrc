@@ -72,10 +72,12 @@ alias c="clear"
 alias m="more"
 alias j="jobs"
 
-alias poweroff="sync && sync && poweroff"
-alias reboot="sync && sync && reboot"
 alias grep="grep --color=always"
 alias less="less -r"
+
+alias poweroff="sync && sync && poweroff"
+alias reboot="sync && sync && reboot"
+alias setipt="sh .SScript/setipt.sh"
 
 # common misspellings
 alias mroe=more
