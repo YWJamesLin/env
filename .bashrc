@@ -15,7 +15,7 @@ done
 #   Other Variables
 bold="\[\e[1m\]"
 reset="\[\e[0m\]"
-date="\D{%Y年%m月%d日 週%a %H:%M}"
+date="\D{%Y年%m月%d日　星期%a　%H:%M}"
 
 #   Prompting
 function promptGen()
