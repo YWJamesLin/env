@@ -46,11 +46,11 @@ export PROMPT_COMMAND=promptGen
 
 # Environment Variables
 
-# 	System
+#   System
 LC_ALL="zh_TW.UTF-8"
 export LC_ALL
 
-# bogus
+#   Bogus
 if [ -f /unix ] ; then	
 	alias ls='/bin/ls -CF --color=always'
 else
@@ -59,27 +59,26 @@ fi
 
 # Aliases
 
-# 	System
+#   Command
 alias ll='ls -l'
 alias dir='ls -ba'
 alias l='ls -al'
-
 alias ss="ps -aux"
 alias dot='ls .[a-zA-Z0-011_]*'
 alias news="xterm -g 80x45 -e trn -e -S1 -N &"
-
 alias c="clear"
 alias m="more"
 alias j="jobs"
-
-alias grep="grep --color=always"
+alias pwd="pwd -P"
+alias rmdir="rmdir -p"
+alias cp="cp -ai"
+alias rm="rm -ri"
+alias mv="mv -i"
+alias grep="grep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn}"
+alias egrep="egrep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn}"
 alias less="less -r"
 
-alias poweroff="sync && sync && poweroff"
-alias reboot="sync && sync && reboot"
-alias setipt="sh .SScript/setipt.sh"
-
-# common misspellings
+#   Common Misspellings
 alias mroe=more
 alias pdw=pwd
 
