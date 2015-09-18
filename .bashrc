@@ -7,7 +7,7 @@ mod_time="1"
 
 #   Colored ASCII Escape Character Array
 for color in {0..255}; do
-  FG[${color}]="[38;5;${color}m"
+  FG[${color}]="\[[38;5;${color}m\]"
 done
 
 #   Other Variables
